@@ -30,7 +30,7 @@ var context = canvas.getContext('2d');
 //context.strokeStyle = "red";
 //context.stroke();
 
-// const colors = new Array("blue", "red", "green", "lime", "orange", "yellow", "purple", "cyan", "teal");
+ const colors = new Array("blue", "red", "green", "lime", "orange", "yellow", "purple", "cyan", "teal");
 
 // for(i = 0; i < 100; i++) {
 //     var x = Math.random() * window.innerWidth;
@@ -41,3 +41,31 @@ var context = canvas.getContext('2d');
 //     context.strokeStyle = colors[Math.floor(Math.random() * colors.length)];
 //     context.stroke();
 // }
+
+var x = Math.random() * innerWidth;
+var y = Math.random() * innerHeight;
+var dx = (Math.random() - 0.5) * 8;
+var dy = (Math.random() - 0.5) * 8;
+var radius = 30;
+function animate() {
+    requestAnimationFrame(animate);
+    context.clearRect(0, 0, innerWidth, innerHeight);
+    
+    // // arc / circle
+    context.beginPath();
+    context.arc(x, y, 30, 0, Math.PI * 2, false);
+    context.strokeStyle = colors[Math.floor(Math.random() * colors.length)];
+    context.stroke();
+
+    if(x + radius > innerWidth || x - radius < 0){
+        dx = -dx;
+    }
+
+    if(y + radius > innerHeight || y - radius < 0){
+        dy = -dy;
+    }
+    x += dx;
+    y += dy;
+}
+
+animate();

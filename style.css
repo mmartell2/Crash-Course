@@ -1,7 +1,18 @@
 body {
     margin: 0px;
+    padding: 0px;
 }
 .connecting-dots {
     border: 1px solid black;
     background-color: rgb(28, 33, 37);
+}
+
+.home {
+    display: flex;
+}
+
+.landing {
+    color: white;
+    margin-right: auto;
+    margin-left: auto;
 }
