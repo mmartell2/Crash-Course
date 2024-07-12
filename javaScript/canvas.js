@@ -42,30 +42,88 @@ var context = canvas.getContext('2d');
 //     context.stroke();
 // }
 
-var x = Math.random() * innerWidth;
-var y = Math.random() * innerHeight;
-var dx = (Math.random() - 0.5) * 8;
-var dy = (Math.random() - 0.5) * 8;
-var radius = 30;
+//makes it so the event only returns the mouse x and y cordinates
+var mouse = {
+    x: undefined,
+    y: undefined
+}
+//event listener on mouse move
+window.addEventListener('mousemove', function(event) {
+    mouse.x = event.x;
+    mouse.y = event.y;
+
+})
+
+//circle function 
+function Circle(x, y, dx, dy, radius) {
+    this.x = x;
+    this.y = y;
+    this.dx = dx;
+    this.dy = dy;
+    this.radius = radius;
+    //draw function that creates the circle
+    this.draw = function(){
+        context.beginPath();
+        context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        context.strokeStyle = 'lime';
+        context.stroke();
+        context.fill();
+    }
+    //update function that moves the circles and enables bounce
+    this.update = function(){
+        if(this.x + this.radius > innerWidth || this.x - this.radius < 0){
+            this.dx = -this.dx;
+        }
+    
+        if(this.y + this.radius > innerHeight || this.y - this.radius < 0){
+            this.dy = -this.dy;
+        }
+        this.x += this.dx;
+        this.y += this.dy;
+
+        this.draw();
+    }
+}
+//circle array to store cicles created by the for loop
+var circleArray = [];
+    //for loop to create the circles
+    for(i = 0; i <100; i++){
+        var radius = 40;
+        var x = Math.random() * (innerWidth - radius * 2) + radius;
+        var y = Math.random() * (innerHeight - radius * 2) + radius;
+        var dx = (Math.random() - 0.5);
+        var dy = (Math.random() - 0.5);
+        
+        circleArray.push(new Circle(x, y, dx, dy, radius));
+    }
+
+var circle = new Circle(Math.random() * window.innerWidth, Math.random() * window.innerHeight, 2, 2, 30);
+//animate function that clears the screen of previous circles making it look like the circles are moving
 function animate() {
     requestAnimationFrame(animate);
     context.clearRect(0, 0, innerWidth, innerHeight);
+
+    for(i = 0; i < circleArray.length; i++){
+        circleArray[i].update();
+    }
+
     
     // // arc / circle
-    context.beginPath();
-    context.arc(x, y, 30, 0, Math.PI * 2, false);
-    context.strokeStyle = colors[Math.floor(Math.random() * colors.length)];
-    context.stroke();
+    // context.beginPath();
+    // context.arc(x, y, 30, 0, Math.PI * 2, false);
+    // context.strokeStyle = 'lime';
+    // //context.strokeStyle = colors[Math.floor(Math.random() * colors.length)];
+    // context.stroke();
 
-    if(x + radius > innerWidth || x - radius < 0){
-        dx = -dx;
-    }
+//     if(x + radius > innerWidth || x - radius < 0){
+//         dx = -dx;
+//     }
 
-    if(y + radius > innerHeight || y - radius < 0){
-        dy = -dy;
-    }
-    x += dx;
-    y += dy;
-}
+//     if(y + radius > innerHeight || y - radius < 0){
+//         dy = -dy;
+//     }
+//     x += dx;
+//     y += dy;
+ }
 
 animate();
