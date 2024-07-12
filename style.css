@@ -1,9 +1,38 @@
 body {
     margin: 0px;
-    padding: 0px;
+    min-height: 100vh;
+    color: #fafafa;
+    font-family: montserrat, sans-serif;
+    background-color: #1a1a1a;
+    overflow-x: hidden
 }
 .connecting-dots {
-    border: 1px solid black;
-    background-color: rgb(28, 33, 37);
+    margin: 0px;
+    border: 1px solid #1a1a1a;
+    background-color: #1a1a1a;
+    display: block;
 }
 
+.home {
+    display: flex;
+    text-align: center;
+}
+
+.landing {
+    display: inline-block;
+    
+}
+
+.landing p {
+    position: absolute;
+    color: white;
+    left: 30%;
+    top: 50%;
+    font-size: 40px;
+}
+
+.landing span {
+    position: absolute;
+    color: teal;
+    
+}

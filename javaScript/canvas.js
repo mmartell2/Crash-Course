@@ -1,8 +1,10 @@
 //finds canvas html element
 var canvas = document.querySelector('canvas');
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = 1920;
+canvas.height = 1080;
+// canvas.width = window.innerWidth;
+// canvas.height = window.innerHeight;
 
 var context = canvas.getContext('2d');
 
@@ -65,10 +67,12 @@ function Circle(x, y, dx, dy, radius) {
     this.draw = function(){
         context.beginPath();
         context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-        context.strokeStyle = 'lime';
+        context.strokeStyle = 'lightblue';
         context.stroke();
+        context.fillStyle = 'cyan';
         context.fill();
     }
+
     //update function that moves the circles and enables bounce
     this.update = function(){
         if(this.x + this.radius > innerWidth || this.x - this.radius < 0){
@@ -81,18 +85,37 @@ function Circle(x, y, dx, dy, radius) {
         this.x += this.dx;
         this.y += this.dy;
 
+        // interactivity
+        // if(mouse.x - this.x < 50 && mouse.x - this.x > -50 && mouse.y - this.y < 50 && mouse.y - this.y > -50) {
+        //     if(this.radius < 20){
+        //         this.radius += 1;
+        //     }
+            
+
+        // } else if(this.radius > 2){
+        //     this.radius -= 1;
+        // }
+
+        if(mouse.x - this.x < 100 && mouse.x - this.x > -100 && mouse.y - this.y < 100 && mouse.y - this.y > -100) {
+            context.beginPath();
+            context.moveTo(this.x, this.y);
+            context.lineTo(mouse.x, mouse.y);
+            context.strokeStyle = 'lightblue';
+            context.stroke();
+        }
+
         this.draw();
     }
 }
 //circle array to store cicles created by the for loop
 var circleArray = [];
     //for loop to create the circles
-    for(i = 0; i <100; i++){
-        var radius = 40;
+    for(i = 0; i <1000; i++){
+        var radius = 2;
         var x = Math.random() * (innerWidth - radius * 2) + radius;
         var y = Math.random() * (innerHeight - radius * 2) + radius;
-        var dx = (Math.random() - 0.5);
-        var dy = (Math.random() - 0.5);
+        var dx = (Math.random() - .5);
+        var dy = (Math.random() - .5);
         
         circleArray.push(new Circle(x, y, dx, dy, radius));
     }
