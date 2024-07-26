@@ -1,8 +1,8 @@
 //finds canvas html element
 var canvas = document.querySelector('canvas');
 
-canvas.width = 1920;
-canvas.height = 1080;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 // canvas.width = window.innerWidth;
 // canvas.height = window.innerHeight;
 
@@ -49,6 +49,8 @@ var mouse = {
     x: undefined,
     y: undefined
 }
+
+var fStyle = 'cyan';
 //event listener on mouse move
 window.addEventListener('mousemove', function(event) {
     mouse.x = event.x;
@@ -67,9 +69,9 @@ function Circle(x, y, dx, dy, radius) {
     this.draw = function(){
         context.beginPath();
         context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-        context.strokeStyle = 'lightblue';
+        context.strokeStyle = 'orange';
         context.stroke();
-        context.fillStyle = 'cyan';
+        context.fillStyle = fStyle;
         context.fill();
     }
 
@@ -100,9 +102,16 @@ function Circle(x, y, dx, dy, radius) {
             context.beginPath();
             context.moveTo(this.x, this.y);
             context.lineTo(mouse.x, mouse.y);
-            context.strokeStyle = 'lightblue';
+            context.strokeStyle = 'green';
             context.stroke();
+            fStyle = 'cyan';
         }
+
+       if(mouse.x - this.x < 100 && mouse.x - this.x > -100 && mouse.y - this.y < 100 && mouse.y - this.y > -100){
+        fStyle = 'limegreen';
+       } else   {
+        fStyle = 'orange';
+       }
 
         this.draw();
     }

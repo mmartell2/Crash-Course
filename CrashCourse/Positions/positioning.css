@@ -1,0 +1,50 @@
+/* Static = follows html document flow
+   Relative = almost the same as static, but it allows 4 different things
+   - Most commonly used to make elements inside it that are absolute to stay inside
+   - Can Change: (When these are utilized it is removed from the flow of the page, but its place is still held. NO LONGER STATIC! Relative to itself)
+        -top
+        -left
+        -right
+        -bottom
+   Absolute = Works similarly to Relative. completely removed from the document flow. 
+   - relative to the page, unless in a container with a positioning other than static
+   Fixed = same as aboslute, but sticks in position when srolling and is based off the entire html page rather than its container
+   Sticky = static until scrolling to its set position where it then becomes fixed
+
+*/
+
+body {
+font-size: 40px;
+
+}
+
+.parent {
+    background-color: #1f8ae2;
+    padding: 10px;
+    position: relative;
+    height: 200vh;
+}
+
+.child-one {
+    background-color: rgb(81, 223, 81);
+    position: relative;
+    left: 20px;
+    top: 20px;
+}
+
+.child-two {
+    background-color: rgb(235, 102, 69);
+    position: absolute;
+    top: 10px;
+}
+
+.child-three {
+    background-color: rgb(255, 127, 148);
+    position: fixed;
+}
+
+.child-four {
+    position: sticky;
+    background-color: yellow;
+    top: 0;
+}
