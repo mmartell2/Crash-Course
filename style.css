@@ -8,9 +8,13 @@ body {
     overflow-x: hidden;
     height: 4000px;
 }
+
+html {
+    scroll-behavior: smooth;
+}
 .connecting-dots {
     margin: 0px;
-    border: 1px solid limegreen;
+    border: 1px solid teal;
     background-color: #1a1a1a;
     display: block;
     height: 100%;
@@ -22,30 +26,115 @@ canvas {
 }
 
 .home {
-    display: flex;
+    position: relative;
     text-align: center;
+    position: relative;
 }
 
 .landing {
-    position: relative;
-    align-self: center;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 999;
-    display: inline-block;
-    
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 350px;
 }
 
 .line-1 {
-    position: absolute;
+    position: relative;
     color: white;
-    font-size: 40px;
+    font-size: 60px;
+    animation-name: line-1;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes line-1 {
+    0% {
+        opacity: 0;
+        left: -100px;
+    }
+    100% {
+        opacity: 1;
+        left: 0px;
+    }
+}
+
+.line-2 {
+    position: relative;
+    color: white;
+    font-size: 60px;
+    animation-name: line-2;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes line-2 {
+    0% {
+        opacity: 0;
+        right: -100px;
+    }
+    100% {
+        opacity: 1;
+        right: 0px;
+    }
 }
 
 .landing span {
-    position: absolute;
     color: teal;
     
+}
+
+.btn {
+    opacity: .8;
+    position: relative;
+    color: teal;
+    border: teal 2px solid;
+    background-color: #1a1a1a;
+    font-size: 35px;
+    margin-top: 10px;
+    padding: 5px 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    animation: btn;
+    animation-duration: 1.5s;
+    /*animation-delay: 1s;*/
+    transition: all;
+    transition-duration: 1.5s;
+}
+
+@keyframes btn {
+    0% {
+        opacity: 0;
+        bottom: -100px;
+    }
+    100% {
+        opacity: .8;
+        bottom: 0px;
+    }
+}
+
+.btn:hover {
+    color: orange;
+    border-color: orange;
+    cursor: pointer;
+    top: -1px;
+    right: -1px;
+}
+
+@keyframes btnhover {
+    0% {
+        color: teal;
+        border-color: teal;
+    }
+    50% {
+        color: white;
+        border-color: white;
+    }
+    100% {
+        color: orange;
+        border-color: orange;
+    }
 }
 
 .nav-bar {
@@ -54,6 +143,7 @@ canvas {
     color: #fafafa;
     position: sticky;
     top: 0px;
+    border-top: teal 2px solid;
 }
 
 .nav-list {
@@ -69,4 +159,9 @@ canvas {
     font-size: 25px;
     float: right;
     width: auto;
+}
+
+.nav-list li:hover {
+    color: teal;
+    cursor: pointer;
 }

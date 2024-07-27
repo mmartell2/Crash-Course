@@ -98,19 +98,19 @@ function Circle(x, y, dx, dy, radius) {
         //     this.radius -= 1;
         // }
 
-        if(mouse.x - this.x < 100 && mouse.x - this.x > -100 && mouse.y - this.y < 100 && mouse.y - this.y > -100) {
-            context.beginPath();
-            context.moveTo(this.x, this.y);
-            context.lineTo(mouse.x, mouse.y);
-            context.strokeStyle = 'green';
-            context.stroke();
-            fStyle = 'cyan';
-        }
+        // if(mouse.x - this.x < 100 && mouse.x - this.x > -100 && mouse.y - this.y < 100 && mouse.y - this.y > -100) {
+        //     context.beginPath();
+        //     context.moveTo(this.x, this.y);
+        //     context.lineTo(mouse.x, mouse.y);
+        //     context.strokeStyle = 'teal';
+        //     context.stroke();
+        //     fStyle = 'cyan';
+        // }
 
        if(mouse.x - this.x < 100 && mouse.x - this.x > -100 && mouse.y - this.y < 100 && mouse.y - this.y > -100){
-        fStyle = 'limegreen';
-       } else   {
         fStyle = 'orange';
+       } else   {
+        fStyle = 'white';
        }
 
         this.draw();
